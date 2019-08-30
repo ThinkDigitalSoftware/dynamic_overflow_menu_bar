@@ -3,6 +3,7 @@ description: A widget that creates an overflow menu based on available space
 version: 0.0.1
 author: thinkdigitalsoftware <jwhite@thinkdigital.software>
 repository: https://github.com/ThinkDigitalSoftware/dynamic_overflow_menu_bar
+homepage: https://github.com/ThinkDigitalSoftware/dynamic_overflow_menu_bar
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
