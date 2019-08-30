@@ -36,13 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
-  dynamic_overflow_actions_bar:
+  dynamic_overflow_menu_bar:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.0.0"
+    version: "0.0.1"
   flutter:
     dependency: "direct main"
     description: flutter

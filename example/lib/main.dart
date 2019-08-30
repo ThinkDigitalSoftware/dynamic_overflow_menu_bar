@@ -1,4 +1,4 @@
-import 'package:dynamic_overflow_actions_bar/dynamic_overflow_menu_bar.dart';
+import 'package:dynamic_overflow_menu_bar/dynamic_overflow_menu_bar.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {

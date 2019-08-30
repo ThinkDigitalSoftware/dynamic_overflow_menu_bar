@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  dynamic_overflow_actions_bar:
+  dynamic_overflow_menu_bar:
     path: ../
 
   # The following adds the Cupertino Icons font to your application.
