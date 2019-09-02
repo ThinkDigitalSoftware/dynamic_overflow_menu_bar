@@ -1,9 +1,10 @@
+import 'package:dynamic_overflow_menu_bar/src/overflow_menu_item.dart';
 import 'package:flutter/material.dart';
 
 /// A widget that can take action buttons and dynamically drop them
 /// into an overflow menu based on the available space.
 class DynamicOverflowMenuBar extends StatefulWidget {
-  final List<Widget> actions;
+  final List<OverFlowMenuItem> actions;
   final Widget title;
   DynamicOverflowMenuBar({Key key, @required this.actions, this.title})
       : super(key: key);
@@ -38,9 +39,9 @@ class _DynamicOverflowMenuBarState extends State<DynamicOverflowMenuBar> {
                 if (spaceForAvailableButtons == widget.actions.length) {
                   count = spaceForAvailableButtons;
                 }
-                List<Widget> visibleWidgets =
+                List<OverFlowMenuItem> visibleWidgets =
                     widget.actions.take(count).toList();
-                Iterable<Widget> remainingActions = [];
+                Iterable<OverFlowMenuItem> remainingActions = [];
                 if (widget.actions.length > spaceForAvailableButtons) {
                   remainingActions = widget.actions
                       .getRange(count, widget.actions.length)
@@ -53,21 +54,20 @@ class _DynamicOverflowMenuBarState extends State<DynamicOverflowMenuBar> {
                   children: [
                     ...visibleWidgets,
                     if (remainingActions.isNotEmpty)
-                      PopupMenuButton<IconButton>(
+                      PopupMenuButton<OverFlowMenuItem>(
                         padding: EdgeInsets.zero,
                         icon: Icon(Icons.more_vert),
                         onSelected: (item) => item.onPressed(),
                         itemBuilder: (BuildContext context) {
                           return [
-                            for (final button in remainingActions)
+                            for (OverFlowMenuItem button in remainingActions)
                               PopupMenuItem(
                                   value: button,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       button,
-                                      if (button is IconButton)
-                                        Text(button.tooltip)
+                                      Text(button.label)
                                     ],
                                   ))
                           ];
