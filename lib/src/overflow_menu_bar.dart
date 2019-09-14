@@ -34,8 +34,6 @@ class _DynamicOverflowMenuBarState extends State<DynamicOverflowMenuBar> {
                 constraints: overFlowMenuConstraints,
                 child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
-                    debugPrint(
-                        'Space available for buttons: ${constraints.maxWidth}');
                     int availableSlots = (constraints.maxWidth / 48).floor();
 
                     if (availableSlots < 1) {

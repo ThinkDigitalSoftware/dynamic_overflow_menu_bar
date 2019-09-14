@@ -39,7 +39,6 @@ class _OverFlowMenuItemState extends State<OverFlowMenuItem> {
       RenderBox _itemBox = _key.currentContext.findRenderObject();
       final Size size = _itemBox.size;
       sizeCompleter.complete(size);
-      debugPrint("Size of ${widget.label} button: $size");
     });
   }
 
