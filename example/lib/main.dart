@@ -1,4 +1,5 @@
 import 'package:dynamic_overflow_menu_bar/dynamic_overflow_menu_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> arguments) {
@@ -40,7 +41,8 @@ class _HomeState extends State<Home> {
         title: DynamicOverflowMenuBar(
           title: Text(
             _titleTextController.text,
-            softWrap: true,
+            overflow: TextOverflow.fade,
+            softWrap: false,
           ),
           actions: <OverFlowMenuItem>[
             OverFlowMenuItem(

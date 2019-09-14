@@ -1,9 +1,14 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class OverFlowMenuItem extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+
+class OverFlowMenuItem extends StatefulWidget {
   final Widget child;
   final String label;
   final VoidCallback onPressed;
+  Future<Size> get size => _sizeCompleter.future;
+  final Completer<Size> _sizeCompleter = Completer();
 
   OverFlowMenuItem({
     @required this.child,
@@ -12,7 +17,34 @@ class OverFlowMenuItem extends StatelessWidget {
   });
 
   @override
+  _OverFlowMenuItemState createState() {
+    var overFlowMenuItemState = _OverFlowMenuItemState();
+    overFlowMenuItemState.size.then(_sizeCompleter.complete);
+    return overFlowMenuItemState;
+  }
+}
+
+class _OverFlowMenuItemState extends State<OverFlowMenuItem> {
+  Completer<Size> sizeCompleter = Completer();
+  final GlobalKey _key = GlobalKey();
+
+  Future<Size> get size {
+    return sizeCompleter.future;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      RenderBox _itemBox = _key.currentContext.findRenderObject();
+      final Size size = _itemBox.size;
+      sizeCompleter.complete(size);
+      debugPrint("Size of ${widget.label} button: $size");
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return child;
+    return Container(key: _key, child: widget.child);
   }
 }
