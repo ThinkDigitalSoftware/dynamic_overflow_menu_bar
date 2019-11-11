@@ -11,4 +11,8 @@
 * Fix overflow by not allowing the Title widget to encroach on the minimum space left for 
   the OverflowButton.
   
+ ## [0.1.2] - Released 11/10/19
+
+* Fix Future already completed error
+  
  

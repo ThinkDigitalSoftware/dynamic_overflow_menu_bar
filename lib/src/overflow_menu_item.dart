@@ -19,7 +19,11 @@ class OverFlowMenuItem extends StatefulWidget {
   @override
   _OverFlowMenuItemState createState() {
     var overFlowMenuItemState = _OverFlowMenuItemState();
-    overFlowMenuItemState.size.then(_sizeCompleter.complete);
+    if (!_sizeCompleter.isCompleted) {
+      overFlowMenuItemState.size.then((size) {
+        _sizeCompleter.complete(size);
+      });
+    }
     return overFlowMenuItemState;
   }
 }
